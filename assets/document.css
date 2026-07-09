@@ -1,0 +1,204 @@
+/* ==========================================================================
+   Batin dokument-visning (web + trykk), bygget paa Paged.js.
+   Governance-dokumentene vises som ekte A4-sider: institusjonen viser papirene
+   sine, bokstavelig. Samme sjel som BDeS/BDoS.
+   ========================================================================== */
+
+:root {
+  --d-indigo: #1a0547;
+  --d-teal: #66c1c2;
+  --d-accent: #2e8b8c;
+  --d-ink: #1a0547;
+  --d-ink-muted: #5a5170;
+  --d-line: #d8d2c8;
+  --d-paper: #ffffff;
+  --d-desk: #e9e5dd;
+
+  --d-font-head: "Fraunces", Georgia, serif;
+  --d-font-body: "Public Sans", system-ui, sans-serif;
+  --d-font-mono: "IBM Plex Mono", monospace;
+}
+
+html { color-scheme: light only; }
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--d-desk);
+  color: var(--d-ink);
+  font-family: var(--d-font-body);
+  font-size: 11pt;
+  line-height: 1.6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* --- Side --- */
+@page {
+  size: A4;
+  margin: 20mm 20mm 22mm 20mm;
+
+  @bottom-left {
+    content: "Batin · Org.nr 938 045 348";
+    font-family: var(--d-font-mono);
+    font-size: 7.5pt;
+    color: #5a5170;
+  }
+  @bottom-right {
+    content: counter(page) " / " counter(pages);
+    font-family: var(--d-font-mono);
+    font-size: 7.5pt;
+    color: #5a5170;
+  }
+  @top-right {
+    content: string(doctitle);
+    font-family: var(--d-font-mono);
+    font-size: 7.5pt;
+    color: #5a5170;
+  }
+}
+@page :first { @top-right { content: none; } }
+
+/* Paged.js pakker hver side i .pagedjs_page */
+.pagedjs_page {
+  background: var(--d-paper);
+  box-shadow: 0 1px 6px rgba(26, 5, 71, 0.12);
+  margin: 10mm auto;
+}
+
+/* --- Innhold --- */
+h1 {
+  string-set: doctitle content(text);
+  font-family: var(--d-font-head);
+  font-weight: 500;
+  font-size: 22pt;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 3mm;
+  break-after: avoid;
+}
+h2 {
+  font-family: var(--d-font-head);
+  font-weight: 500;
+  font-size: 13pt;
+  margin: 9mm 0 3mm;
+  break-after: avoid;
+}
+p { margin: 0 0 3mm; }
+a { color: var(--d-accent); text-decoration: underline; }
+strong { font-weight: 600; }
+
+.d-kicker {
+  font-family: var(--d-font-body);
+  font-size: 7.5pt;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--d-ink-muted);
+  margin: 0 0 2mm;
+}
+.d-meta { font-family: var(--d-font-mono); font-size: 8.5pt; color: var(--d-ink-muted); }
+.d-muted { color: var(--d-ink-muted); }
+
+/* Dokumenthode med jadwal-ekko */
+.d-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 5mm;
+  border-bottom: 1px solid var(--d-ink);
+  margin-bottom: 2mm;
+  position: relative;
+}
+.d-head::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1.2mm;
+  border-bottom: 0.5pt solid var(--d-teal);
+}
+.d-head .d-brand { display: flex; align-items: center; gap: 3.5mm; }
+.d-head img { width: 12mm; height: 12mm; border-radius: 2.6mm; }
+.d-head .d-name { font-family: var(--d-font-head); font-size: 15pt; font-weight: 500; }
+.d-head .d-right { text-align: right; }
+
+/* Seksjonshode med ayah-tall */
+.d-section-head {
+  display: flex;
+  align-items: center;
+  gap: 3.5mm;
+  margin: 9mm 0 3mm;
+  break-after: avoid;
+  break-inside: avoid;
+}
+.d-section-head h2 { margin: 0; }
+.d-ayah {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 8mm; height: 8mm;
+  border: 0.75pt solid var(--d-accent);
+  border-radius: 50%;
+  font-family: var(--d-font-mono);
+  font-size: 8.5pt;
+  color: var(--d-accent);
+  flex: none;
+}
+
+/* Halvmaane-lister */
+ul.d-list { list-style: none; padding-left: 0; }
+ul.d-list li { position: relative; padding-left: 7mm; margin-bottom: 1.6mm; }
+ul.d-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.5mm; top: 0.5em;
+  width: 2.8mm; height: 2.8mm;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%232e8b8c' d='M14 2a11 11 0 1 0 8 18.5A10 10 0 0 1 14 2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Definisjonsrad: etikett + verdi paa linje */
+.d-facts { border-top: 0.75pt solid var(--d-ink); margin: 3mm 0; }
+.d-facts > div {
+  display: flex; gap: 5mm;
+  padding: 2mm 0;
+  border-bottom: 0.5pt solid var(--d-line);
+}
+.d-facts dt { flex: 0 0 34mm; margin: 0; font-weight: 600; }
+.d-facts dd { margin: 0; }
+
+.d-slutt { display: flex; align-items: center; gap: 5mm; margin-top: 10mm; break-inside: avoid; }
+.d-slutt::before, .d-slutt::after { content: ""; flex: 1; border-top: 0.5pt solid var(--d-line); }
+.d-slutt span {
+  width: 3.2mm; height: 3.2mm; flex: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%232e8b8c' d='M14 2a11 11 0 1 0 8 18.5A10 10 0 0 1 14 2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+ul.d-list li, .d-facts > div, .d-slutt { break-inside: avoid; }
+
+/* Tynn verktøylinje over dokumentet (vises ikke i PDF) */
+.d-toolbar {
+  position: sticky; top: 0; z-index: 5;
+  background: var(--d-indigo); color: #f2eee6;
+  font-family: var(--d-font-body); font-size: 10pt;
+  padding: 10px 16px;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+}
+.d-toolbar a { color: var(--d-teal); text-decoration: none; }
+.d-toolbar a:hover { text-decoration: underline; }
+.d-toolbar .d-tb-title { color: #a79fbc; font-family: var(--d-font-mono); font-size: 8.5pt; }
+@media print { .d-toolbar { display: none; } }
+
+/* Flat visning: aapnet med dobbeltklikk (file://), uten Paged.js.
+   Da vises innholdet som ett rent, sentrert ark i stedet for kant til kant. */
+@media screen {
+  html.flat body {
+    background: var(--d-paper);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 60px) 60px;
+    box-shadow: 0 1px 10px rgba(26, 5, 71, 0.12);
+  }
+  html.flat .d-toolbar {
+    margin: 0 calc(-1 * clamp(20px, 5vw, 60px)) 28px;
+  }
+  html.flat .d-head { margin-top: 4mm; }
+}
