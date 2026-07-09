@@ -131,6 +131,18 @@ strong { font-weight: 600; }
   break-inside: avoid;
 }
 .d-section-head h2 { margin: 0; }
+
+h3 {
+  font-family: var(--d-font-head);
+  font-weight: 600;
+  font-size: 11.5pt;
+  margin: 6mm 0 2mm;
+  break-after: avoid;
+}
+ol { margin: 0 0 3mm; padding-left: 7mm; }
+ol li { margin-bottom: 1.6mm; }
+ol li::marker { color: var(--d-accent); font-family: var(--d-font-mono); font-size: 9pt; }
+dl.d-facts + h3 { margin-top: 8mm; }
 .d-ayah {
   display: inline-flex;
   align-items: center;
