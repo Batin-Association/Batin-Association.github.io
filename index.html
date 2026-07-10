@@ -3,12 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem('batin-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
 <title>Batin, a Norwegian non-profit for privacy software</title>
 <meta name="description" content="Batin is a Norwegian non-profit association building free software that protects people instead of harvesting them. No ads, no telemetry, no tracking, nothing sent to any server.">
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/batin.css">
 <script defer src="assets/arabic-numerals.js"></script>
+<script defer src="assets/theme.js"></script>
 </head>
 <body>
 
@@ -23,6 +25,7 @@
       <a href="#name">The name</a>
       <a href="#contact">Contact</a>
       <span class="b-lang"><a href="./" aria-current="true">EN</a> / <a href="no/">NO</a></span>
+      <button class="b-theme" type="button" aria-label="Switch light or dark theme"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4.3"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg></button>
     </div>
   </div>
 </nav>

@@ -687,3 +687,25 @@ strong { font-weight: 600; }
   .b-hero-mark { width: 104px; }
   .b-folio-inner { font-size: 0.66rem; }
 }
+
+/* --------------------------------------------------------------------------
+   14. Tema-veksler (lys / moerk)
+   -------------------------------------------------------------------------- */
+.b-theme {
+  background: none;
+  border: 0;
+  padding: 4px;
+  margin-left: 2px;
+  cursor: pointer;
+  color: var(--b-ink);
+  line-height: 0;
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--b-r-sm);
+  transition: color var(--b-t);
+}
+.b-theme:hover { color: var(--b-accent); }
+.b-theme svg { width: 18px; height: 18px; }
+.b-theme .sun { display: none; }
+:root[data-theme="dark"] .b-theme .moon { display: none; }
+:root[data-theme="dark"] .b-theme .sun { display: inline; }

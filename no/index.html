@@ -3,12 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem('batin-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
 <title>Batin, norsk ideell forening for personvern-programvare</title>
 <meta name="description" content="Batin er en norsk ideell forening som bygger fri programvare som beskytter mennesket i stedet for å høste det. Ingen reklame, ingen telemetri, ingen sporing, ingenting sendt til noen server.">
 <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../assets/batin.css">
 <script defer src="../assets/arabic-numerals.js"></script>
+<script defer src="../assets/theme.js"></script>
 </head>
 <body>
 
@@ -23,6 +25,7 @@
       <a href="#navnet">Navnet</a>
       <a href="#kontakt">Kontakt</a>
       <span class="b-lang"><a href="../">EN</a> / <a href="./" aria-current="true">NO</a></span>
+      <button class="b-theme" type="button" aria-label="Bytt lyst eller moerkt tema"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4.3"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg></button>
     </div>
   </div>
 </nav>
