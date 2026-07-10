@@ -39,13 +39,13 @@ body {
   margin: 20mm 20mm 22mm 20mm;
 
   @bottom-left {
-    content: "Batin · Org.nr 938 045 348";
+    content: "Batin · Org.nr ٩٣٨ ٠٤٥ ٣٤٨";
     font-family: var(--d-font-mono);
     font-size: 7.5pt;
     color: #5a5170;
   }
   @bottom-right {
-    content: counter(page) " / " counter(pages);
+    content: counter(page, arabic-indic) "‎ / " counter(pages, arabic-indic) "‎";
     font-family: var(--d-font-mono);
     font-size: 7.5pt;
     color: #5a5170;
