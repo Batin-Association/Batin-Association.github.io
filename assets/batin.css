@@ -616,3 +616,74 @@ strong { font-weight: 600; }
   padding: 0.04em 0.12em 0 0;
   color: var(--b-accent-strong);
 }
+
+/* --------------------------------------------------------------------------
+   13. Loeft: merke-motiv, hero-tyngde, baand-tekstur
+   -------------------------------------------------------------------------- */
+
+:root {
+  --mark-crescent: #66c1c2;
+  --mark-core: #1a0547;
+}
+:root[data-theme="dark"] { --mark-core: #2a1c57; }
+@media (prefers-color-scheme: dark) { :root { --mark-core: #2a1c57; } }
+:root[data-theme="light"] { --mark-core: #1a0547; }
+
+/* Merket loesrevet fra firkanten, brukt stort */
+.b-mark { display: block; width: 100%; height: auto; }
+.b-mark .c { fill: var(--mark-crescent); }
+.b-mark .k { fill: var(--mark-core); }
+
+/* Hero: mer tyngde, merket som stort motiv til hoeyre */
+.b-hero { align-items: center; gap: clamp(24px, 5vw, 72px); }
+.b-hero h1 { font-size: clamp(2.6rem, 6.2vw, 4.6rem); font-weight: 420; letter-spacing: -0.02em; line-height: 1.06; }
+.b-hero-mark { width: clamp(190px, 26vw, 340px); }
+.b-hero-mark .b-mark { filter: drop-shadow(0 8px 30px rgba(26,5,71,0.10)); }
+@media (max-width: 860px) {
+  .b-hero-mark { display: block; width: 120px; margin-bottom: var(--b-s4); opacity: 0.9; }
+  .b-hero { grid-template-columns: 1fr; }
+}
+
+/* Stor, rolig sitat-vekt paa lead-avsnitt */
+.b-lead { font-size: clamp(1.1rem, 1.6vw, 1.28rem); line-height: 1.55; color: var(--b-ink); }
+
+/* Baand: svakt halvmaane-motiv nede til hoeyre, som vannmerke */
+.b-band { position: relative; overflow: hidden; }
+.b-band::after {
+  content: "";
+  position: absolute;
+  right: -6%;
+  bottom: -30%;
+  width: 46%;
+  max-width: 560px;
+  aspect-ratio: 1;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%2366c1c2' d='M300 60a196 196 0 1 0 150 330A230 230 0 0 1 300 60z'/%3E%3C/svg%3E") center / contain no-repeat;
+  opacity: 0.06;
+  pointer-events: none;
+}
+.b-band > * { position: relative; z-index: 1; }
+
+/* Foliolinje faar tynn teal-underkant, som et manuskript-oppslag */
+.b-folio { border-bottom: 1px solid var(--b-line); box-shadow: inset 0 -1px 0 rgba(102,193,194,0.28); }
+
+/* Knapp: litt mer naervaer */
+.b-btn-primary { letter-spacing: 0.01em; }
+.b-btn-primary:hover { transform: translateY(-1px); }
+
+/* Doclist: pil som duker opp paa hover, rolig */
+.b-doclist a { position: relative; transition: padding-left var(--b-t); }
+.b-doclist a::before {
+  content: "";
+  position: absolute; left: -4px; top: 50%;
+  width: 9px; height: 9px; transform: translateY(-50%) scale(0);
+  background: var(--b-crescent) center / contain no-repeat;
+  transition: transform var(--b-t);
+}
+.b-doclist a:hover { padding-left: 16px; }
+.b-doclist a:hover::before { transform: translateY(-50%) scale(1); }
+
+@media (max-width: 600px) {
+  .b-hero h1 { font-size: clamp(2rem, 8.4vw, 2.7rem); line-height: 1.1; }
+  .b-hero-mark { width: 104px; }
+  .b-folio-inner { font-size: 0.66rem; }
+}
