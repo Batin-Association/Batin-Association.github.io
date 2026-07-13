@@ -709,3 +709,42 @@ strong { font-weight: 600; }
 .b-theme .sun { display: none; }
 :root[data-theme="dark"] .b-theme .moon { display: none; }
 :root[data-theme="dark"] .b-theme .sun { display: inline; }
+
+/* --------------------------------------------------------------------------
+   15. Hub-kort paa forsiden
+   -------------------------------------------------------------------------- */
+.b-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--b-s4);
+  max-width: var(--b-max);
+}
+@media (max-width: 760px) { .b-cards { grid-template-columns: 1fr; } }
+a.b-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--b-ink);
+}
+a.b-card h3 { margin: 0; }
+a.b-card p { margin: 0; color: var(--b-ink-muted); font-size: var(--b-size-small); }
+a.b-card .b-card-more {
+  margin-top: auto;
+  padding-top: 6px;
+  color: var(--b-accent);
+  font-size: var(--b-size-small);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+a.b-card .b-card-more::after {
+  content: "";
+  width: 9px; height: 9px;
+  background: var(--b-crescent) center / contain no-repeat;
+  transform: translateX(-2px);
+  transition: transform var(--b-t);
+}
+a.b-card:hover { border-color: var(--b-line-strong); }
+a.b-card:hover .b-card-more { text-decoration: underline; }
+a.b-card:hover .b-card-more::after { transform: translateX(2px); }
